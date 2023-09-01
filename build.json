@@ -1,0 +1,11 @@
+{
+    "FirstRun": true,
+    "GitStatus": false,
+    "CopyToGame": true,
+    "PathToRoot": "",
+    "BuildDir": "./Build",
+    "CopyBundles": true,
+    "BuildZip": true,
+    "StartServer": true,
+    "StartDelay": 5
+}
