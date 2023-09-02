@@ -34,7 +34,7 @@ if (config.GitStatus === true)
 console.log("[SPT Build System] Build options:");
 console.log(`[SPT Build System] CopyToGame:     ${config.CopyToGame}`);
 console.log(`[SPT Build System] PathToRoot:     ${config.PathToRoot}`);
-console.log(`[SPT Build System] BuildDir:       ${config.buildDir}`);
+console.log(`[SPT Build System] BuildDir:       ${config.BuildDir}`);
 console.log(`[SPT Build System] CopyBundles:    ${config.CopyBundles}`);
 console.log(`[SPT Build System] BuildZip:       ${config.BuildZip}`);
 console.log(`[SPT Build System] StartServer:    ${config.StartServer}`);
@@ -132,7 +132,6 @@ if (config.CopyToGame)
     console.log(chalk.green(`[SPT Build System] Server files copied to game path: ${gamePath}`));
 }
 
-// TODO: FIX ME
 if (config.BuildZip)
 {
     // const representing the root of the drive for the executing process.
@@ -167,7 +166,7 @@ if (config.BuildZip)
     });
 }
 
-if (config.StartServer === true)
+if (config.StartServer === true && config.PathToRoot !== "")
 {
     console.log(chalk.green(`[SPT Build System] Server starting in ${config.StartDelay} seconds`));
     setTimeout(() => 
@@ -186,4 +185,8 @@ if (config.StartServer === true)
             console.error("Error executing command:", error.message);
         }
     }, config.StartDelay * 1000);
+}
+else
+{
+    console.log(chalk.red("[SPT Build System] Error starting server: Is the server path configured?"));
 }
