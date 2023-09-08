@@ -71,12 +71,12 @@ console.log(chalk.green("[SPT Build System] Previous build files deleted."));
 let exclude;
 if (config.CopyBundles === true)
 {
-    exclude = glob.sync(`{${config.IgnoreList.join(",")}}`, { realpath: true, dot: true });
+    exclude = glob.sync(`{${config.IgnoreList.join(",")}}`, { realpath: true, absolute: true, dot: true });
 }
 else
 {
     config.IgnoreList.push("bundles/")
-    exclude = glob.sync(`{${config.IgnoreList.join(",")}}`, { realpath: true, dot: true });
+    exclude = glob.sync(`{${config.IgnoreList.join(",")}}`, { realpath: true, absolute: true, dot: true });
 }
 
 fs.copySync(currentDir, path.normalize(`${currentDir}/../~${modName}`), {filter: (src) =>
